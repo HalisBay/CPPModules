@@ -17,10 +17,11 @@ int main() {
     while (true) {
         std::string command;
         std::cout << "Enter a command : ";
-        std::cin >> command;
-        for (size_t i = 0; i < command.length(); i++) {
-            command[i] = std::toupper(command[i]);
-        }
+        std::getline(std::cin, command);
+	    std::cin.eof();
+        // for (size_t i = 0; i < command.length(); i++) {
+        //     command[i] = std::toupper(command[i]);
+        // }
         if (command.compare("EXIT") == 0) {
             std::cout << "Exiting program" << std::endl;
             break;

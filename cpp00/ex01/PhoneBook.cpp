@@ -6,7 +6,7 @@
 /*   By: hbay <hbay@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:36:49 by hbay              #+#    #+#             */
-/*   Updated: 2024/04/30 10:36:51 by hbay             ###   ########.fr       */
+/*   Updated: 2024/05/07 13:49:18 by hbay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
+#include <strstream>
+#include <string>
 
  PhoneBook::PhoneBook()
     {
@@ -28,16 +30,26 @@
         if (index >= 8)
             index = 0;
         std::string name, surname, nickname, phoneNumber, darkestSecret;
-        std::cout << "Enter name: ";
-        std::cin >> name;
+         std::cout << "Enter name:";
+        std::getline(std::cin, name);
+	    if (std::cin.eof())
+		    return ;
         std::cout << "Enter surname: ";
-        std::cin >> surname;
+        std::getline(std::cin, surname);
+	    if (std::cin.eof())
+		    return ;
         std::cout << "Enter nickname: ";
-        std::cin >> nickname;
+        std::getline(std::cin, nickname);
+	    if (std::cin.eof())
+		    return ;
         std::cout << "Enter phone number: ";
-        std::cin >> phoneNumber;
+        std::getline(std::cin, phoneNumber);
+	    if (std::cin.eof())
+		    return ;
         std::cout << "Enter darkest secret: ";
-        std::cin >> darkestSecret;
+        std::getline(std::cin, darkestSecret);
+	    if (std::cin.eof())
+		    return ;
         
         contacts[index] = Contact(name, surname, nickname, phoneNumber, darkestSecret);
         if(contactCount < 8)
@@ -63,9 +75,16 @@
             contacts[i].displayContact();
         }
 
-        int number;
+        std::string number2;
+    
         std::cout << "Enter a number: ";
-        if (!(std::cin >> number)) {
+        std::getline(std::cin, number2);
+     
+        if (std::cin.eof())
+            return ;
+     
+        int number = atoi(number2.c_str());
+            if ((number < 0 && number > contactCount)) {
             std::cout << "Invalid input" << std::endl;
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -85,4 +104,5 @@
         } else {
             std::cout << "Invalid index" << std::endl;
         }
+        return;
     }
