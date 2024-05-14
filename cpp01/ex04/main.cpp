@@ -6,7 +6,7 @@
 /*   By: hbay <hbay@student.42istanbul.com.tr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:09:24 by hbay              #+#    #+#             */
-/*   Updated: 2024/05/03 17:09:26 by hbay             ###   ########.fr       */
+/*   Updated: 2024/05/14 13:31:57 by hbay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,17 @@ void replaceInFile(const std::string& filename, const std::string& s1, const std
 int main() {
     std::string filename, s1, s2;
     std::cout << "Enter filename: ";
-    std::cin >> filename;
+    std::getline(std::cin, filename);
+	    if (std::cin.eof())
+		    return 0;
     std::cout << "Enter string to replace: ";
-    std::cin >> s1;
+    std::getline(std::cin, s1);
+	    if (std::cin.eof())
+		    return 0;
     std::cout << "Enter replacement string: ";
-    std::cin >> s2;
+    std::getline(std::cin, s2);
+	    if (std::cin.eof())
+		    return 0;
 
     replaceInFile(filename, s1, s2);
 
