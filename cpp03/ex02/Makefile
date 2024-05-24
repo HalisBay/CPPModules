@@ -1,7 +1,7 @@
 NAME = program
 CC = g++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g
-SRCS = main.cpp Fixed.cpp
+SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -16,4 +16,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
 .PHONY: all clean fclean re
