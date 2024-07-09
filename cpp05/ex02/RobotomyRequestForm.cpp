@@ -19,7 +19,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << *this <<" was destroyed" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & cpy)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & cpy) : Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExecute())
 {
 	    *this = cpy;
 }

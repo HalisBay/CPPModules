@@ -16,7 +16,7 @@ private:
 public:
     Form();
     Form(std::string name,size_t gradeToSign, size_t gradeToExecute);
-    ~Form();
+    virtual ~Form();
     Form(const Form &cpy);
     Form &operator=(const Form &other);
 

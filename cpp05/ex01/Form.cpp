@@ -1,12 +1,12 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form() : _name("Default"), _isSigned(false), _gradeToExecute(110), _gradeToSign(150) {
+Form::Form() : _name("Default"), _isSigned(false), _gradeToSign(150), _gradeToExecute(110) {
     std::cout << "Default constructor called for Form " << _name << std::endl;
 }
 
 Form::Form(std::string name, size_t gradeToSign, size_t gradeToExecute)
-    : _name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _isSigned(false) {
+    : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
     if (_gradeToSign > 150 || _gradeToExecute > 150)
         throw GradeTooLowException();
     else if (_gradeToSign < 1 || gradeToExecute < 1)

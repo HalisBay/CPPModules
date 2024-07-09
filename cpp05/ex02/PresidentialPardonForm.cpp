@@ -17,7 +17,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << *this << " was destroyed" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & cpy)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & cpy) : Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExecute())
 {
     *this = cpy;
 }
