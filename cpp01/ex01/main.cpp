@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-int main(int argc, char const *argv[])
+int main()
 {
     int x = 10;
 	Zombie *z = zombieHorde(x,"hasdasd");

@@ -74,6 +74,6 @@ void Harl::complain(std::string level)
            std::cerr << "you entered an unknown level" << std::endl;
 		   return;
     }
-	if (funcPtr != nullptr)
+	if (funcPtr != NULL)
         (this->*funcPtr)();
 }

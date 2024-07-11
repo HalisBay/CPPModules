@@ -13,7 +13,7 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-int main(int argc, char const *argv[])
+int main()
 {
     FragTrap ali("ali");
     FragTrap mustafa("mustafa");

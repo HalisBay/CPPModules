@@ -12,7 +12,7 @@
 
 #include "Fixed.hpp"
 
-int main(int argc, char const *argv[])
+int main()
 {
     Fixed a;
     Fixed b( a );

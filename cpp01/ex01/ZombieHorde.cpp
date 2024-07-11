@@ -17,7 +17,7 @@ Zombie *zombieHorde(int N, std::string name)
 
     Zombie *hordes = new Zombie[N];
 
-    for (size_t i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
         // Zombie Zombie(name);
         hordes[i].setName(name);

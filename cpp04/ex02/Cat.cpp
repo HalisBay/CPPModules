@@ -29,7 +29,7 @@ Cat::~Cat() {
     std::cout << "Cat escaped" << std::endl;
 }
 
-Cat::Cat(const Cat &cpy) {
+Cat::Cat(const Cat &cpy) : AAnimal(cpy) {
     *this = cpy;
 }
 

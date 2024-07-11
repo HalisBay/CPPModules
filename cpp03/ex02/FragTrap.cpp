@@ -36,7 +36,7 @@ FragTrap::~FragTrap()
     std::cout << "FragTrap " << this->_name << " destroyed" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &cpy)
+FragTrap::FragTrap(const FragTrap &cpy):ClapTrap(cpy)
 {
     *this = cpy;
 }

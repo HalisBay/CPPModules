@@ -12,6 +12,8 @@
 
 #pragma once
 #include <iostream>
+#include <cstdlib>
+#include <cstdio>
 
 class Animal {
 protected:

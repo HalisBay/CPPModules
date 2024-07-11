@@ -74,6 +74,6 @@ void Harl::complain(std::string level)
            std::cout << " Probably complaining about insignificant problems" << std::endl;
 		   return;
     }
-	if (funcPtr != nullptr)
+	if (funcPtr != NULL)
         (this->*funcPtr)();
 }

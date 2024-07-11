@@ -15,7 +15,7 @@
 #include <string>
 
 void replaceInFile(const std::string& filename, const std::string& s1, const std::string& s2) {
-    std::ifstream myFile(filename);
+    std::ifstream myFile(filename.c_str()); // Convert std::string to const char*
     if (!myFile) {
         std::cerr << "Error opening file: " << filename << std::endl;
         return;
@@ -46,18 +46,19 @@ int main() {
     std::string filename, s1, s2;
     std::cout << "Enter filename: ";
     std::getline(std::cin, filename);
-	    if (std::cin.eof())
-		    return 0;
+    if (std::cin.eof())
+        return 0;
     std::cout << "Enter string to replace: ";
     std::getline(std::cin, s1);
-	    if (std::cin.eof())
-		    return 0;
+    if (std::cin.eof())
+        return 0;
     std::cout << "Enter replacement string: ";
     std::getline(std::cin, s2);
-	    if (std::cin.eof())
-		    return 0;
+    if (std::cin.eof())
+        return 0;
 
     replaceInFile(filename, s1, s2);
 
     return 0;
 }
+

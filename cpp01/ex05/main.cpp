@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-int main(int argc, char const *argv[])
+int main()
 {
 	Harl harl;
 	std::string level;

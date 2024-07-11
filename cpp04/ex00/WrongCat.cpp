@@ -23,7 +23,7 @@ WrongCat::~WrongCat()
     std::cout << "Wrong Cat escaped" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &cpy)
+WrongCat::WrongCat(const WrongCat &cpy) : WrongAnimal(cpy)
 {
     *this = cpy;
 }

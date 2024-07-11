@@ -35,7 +35,7 @@ ScavTrap::~ScavTrap()
     std::cout << "scavTrap " << this->_name << " destroyed" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &cpy)
+ScavTrap::ScavTrap(const ScavTrap &cpy): ClapTrap(cpy)
 {
     *this = cpy;
 }

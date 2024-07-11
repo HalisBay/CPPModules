@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
-int main(int argc, char const *argv[])
+int main()
 {
 	Zombie *z = newZombie("Mustafa");
 	z->announce();

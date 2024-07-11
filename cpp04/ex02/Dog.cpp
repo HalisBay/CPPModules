@@ -28,7 +28,7 @@ Dog::~Dog() {
     std::cout << "Dog escaped" << std::endl;
 }
 
-Dog::Dog(const Dog &cpy) {
+Dog::Dog(const Dog &cpy) : AAnimal(cpy) {
     *this = cpy;
 }
 

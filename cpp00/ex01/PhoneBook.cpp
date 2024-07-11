@@ -12,10 +12,7 @@
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include <iostream>
-#include <iomanip>
-#include <strstream>
-#include <string>
+
 
  PhoneBook::PhoneBook()
     {
@@ -25,38 +22,48 @@
 
     PhoneBook::~PhoneBook() {}
 
-    void PhoneBook::addContact() {
+void PhoneBook::addContact() {
+    if (index >= 8)
+        index = 0;
 
-        if (index >= 8)
-            index = 0;
-        std::string name, surname, nickname, phoneNumber, darkestSecret;
-         std::cout << "Enter name:";
-        std::getline(std::cin, name);
-	    if (std::cin.eof())
-		    return ;
-        std::cout << "Enter surname: ";
-        std::getline(std::cin, surname);
-	    if (std::cin.eof())
-		    return ;
-        std::cout << "Enter nickname: ";
-        std::getline(std::cin, nickname);
-	    if (std::cin.eof())
-		    return ;
-        std::cout << "Enter phone number: ";
-        std::getline(std::cin, phoneNumber);
-	    if (std::cin.eof())
-		    return ;
-        std::cout << "Enter darkest secret: ";
-        std::getline(std::cin, darkestSecret);
-	    if (std::cin.eof())
-		    return ;
-        
-        contacts[index] = Contact(name, surname, nickname, phoneNumber, darkestSecret);
-        if(contactCount < 8)
-            contactCount++;
-        index++;
-        std::cout << "Contact added successfully!" << std::endl;
+    std::string name, surname, nickname, phoneNumber, darkestSecret;
+
+    std::cout << "Enter name:";
+    if (!std::getline(std::cin, name) || name.empty()) {
+        std::cerr << "Error: Invalid or empty input for name" << std::endl;
+        return;
     }
+
+    std::cout << "Enter surname: ";
+    if (!std::getline(std::cin, surname) || surname.empty()) {
+        std::cerr << "Error: Invalid or empty input for surname" << std::endl;
+        return;
+    }
+
+    std::cout << "Enter nickname: ";
+    if (!std::getline(std::cin, nickname) || nickname.empty()) {
+        std::cerr << "Error: Invalid or empty input for nickname" << std::endl;
+        return;
+    }
+
+    std::cout << "Enter phone number: ";
+    if (!std::getline(std::cin, phoneNumber) || phoneNumber.empty()) {
+        std::cerr << "Error: Invalid or empty input for phone number" << std::endl;
+        return;
+    }
+
+    std::cout << "Enter darkest secret: ";
+    if (!std::getline(std::cin, darkestSecret) || darkestSecret.empty()) {
+        std::cerr << "Error: Invalid or empty input for darkest secret" << std::endl;
+        return;
+    }
+
+    contacts[index] = Contact(name, surname, nickname, phoneNumber, darkestSecret);
+    if (contactCount < 8)
+        contactCount++;
+    index++;
+    std::cout << "Contact added successfully!" << std::endl;
+}
 
     void PhoneBook::searchContact() const {
         if (contactCount == 0) {

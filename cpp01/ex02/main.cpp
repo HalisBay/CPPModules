@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
-int main(int argc, char const *argv[])
+int main()
 {
     std::string str = "HI THIS IS BRAIN";
     std::string *strPointer;

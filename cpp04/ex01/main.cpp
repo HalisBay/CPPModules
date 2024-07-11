@@ -15,6 +15,7 @@
 #include "Dog.hpp"
 #include "Brain.hpp"
 #include <string>
+#include <sstream> 
 
 int main() {
     Dog* dogs[3];
@@ -37,9 +38,15 @@ int main() {
         cats[i]->makeSound();
     }
 
+    std::stringstream ss;
     for (int i = 0; i < 3; ++i) {
-        dogs[i]->setIdeas("Idea for Dog " + std::to_string(i));
-        cats[i]->setIdeas("Idea for Cat " + std::to_string(i));
+        ss.str(""); // Clear stringstream
+        ss << "Idea for Dog " << i;
+        dogs[i]->setIdeas(ss.str());
+
+        ss.str(""); // Clear stringstream
+        ss << "Idea for Cat " << i;
+        cats[i]->setIdeas(ss.str());
     }
 
     for (int i = 0; i < 3; ++i) {
@@ -51,7 +58,7 @@ int main() {
         std::cout << "Ideas for Cat " << i << ": ";
         cats[i]->getIdeas();
     }
-    
+
     for (int i = 0; i < 3; ++i) {
         delete dogs[i];
         delete cats[i];

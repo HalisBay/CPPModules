@@ -12,7 +12,7 @@
 
 #include "ClapTrap.hpp"
 
-int main(int argc, char const *argv[])
+int main()
 {
     ClapTrap cp("mokoko");
     std::cout << "---------------------------------------------" << std::endl;
