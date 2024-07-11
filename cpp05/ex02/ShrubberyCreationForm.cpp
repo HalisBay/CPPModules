@@ -21,12 +21,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &cpy) : Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExecute())
 {
-		*this = cpy; // Dikkat: Burada derin kopyalama yapılacaksa özel bir işlem yapılmalı.
+		*this = cpy; 
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)
 {
-		this->_target = other._target; // Sadece _target alanını kopyalıyoruz.
+		this->_target = other._target; 
 		return (*this);
 }
 
@@ -59,14 +59,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		}
 		else
 		{
-				std::ofstream ofs(this->_target.c_str()); // std::ofstream için const char* tipinde dosya adı bekleniyor.
+				std::ofstream ofs(this->_target.c_str()); 
 				if (!ofs.is_open())
 				{
 						std::cout << "Cannot open file: " << this->_target << std::endl;
 						return;
 				}
 				ofs << Atree;
-				ofs.close(); // Dosyayı kapatmayı unutmayın.
+				ofs.close(); 
 				std::cout << "Shrubbery successfully created in " << this->_target << std::endl;
 		}
 }

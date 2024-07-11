@@ -55,7 +55,7 @@ int main()
 				try
 				{
 						form2.execute(b);
-						form2.execute(b); // Test multiple executions
+						form2.execute(b);
 				}
 				catch (std::exception &e)
 				{
