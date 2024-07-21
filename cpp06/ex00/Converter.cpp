@@ -1,31 +1,4 @@
-#if !defined(CONVERTER_HPP)
-#define CONVERTER_HPP
-
-#include <iostream>
-#include <climits>
-#include <cstdlib> 
-#include <stdexcept> 
-
-class Converter
-{
-private:
-    std::string _str;
-
-public:
-    Converter();
-    ~Converter();
-    Converter(std::string str);
-    Converter(const Converter &cpy);
-    Converter &operator=(const Converter &other);
-
-    std::string getStr() const;
-    bool isDisplayableChar(int c);
-
-    operator char();
-    operator int();
-    operator float();
-    operator double();
-};
+#include "Converter.hpp"
 
 Converter::Converter() : _str("Default")
 {
