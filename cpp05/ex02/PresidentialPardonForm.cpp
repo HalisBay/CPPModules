@@ -2,22 +2,22 @@
 
 //sign 25, exec 5
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("Roboto Default Form", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential Default Form", 25, 5)
 {
 	this->_target = "Default";
-    std::cout << "Roboto Default Const Called"<< std::endl;}
+    std::cout << "Presidential Default Const Called"<< std::endl;}
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Roboto Parameter Form", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential Parameter Form", 25, 5)
 {
 	this->_target = target;
-    std::cout << "Roboto Parameter Const Called"<< std::endl;}
+    std::cout << "Presidential Parameter Const Called"<< std::endl;}
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
 	std::cout << *this << " was destroyed" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & cpy) : Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExecute())
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & cpy) : AForm(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExecute())
 {
     *this = cpy;
 }
@@ -36,9 +36,9 @@ std::string	PresidentialPardonForm::getTarget( void ) const
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (this->getSigned() == 0)
-		throw (Form::SignException());
-	else if (executor.getGradeNote() > this->getGradeToExecute())
-		throw (Form::GradeTooLowException());
+		throw (AForm::SignException());
+	else if (executor.getGrade() > this->getGradeToExecute())
+		throw (AForm::GradeTooLowException());
 	else
 		std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

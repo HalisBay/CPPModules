@@ -3,38 +3,25 @@
 
 int main() {
     try {
-        std::cout << "CREATING:" << std::endl;
-        std::cout << "----------------------------" << std::endl;
-        
-        Bureaucrat bob("Bob", 1);
-        Bureaucrat bill("Bill", 132);
+        Bureaucrat musti("musti", 1);
+        Bureaucrat ali("ali", 52);
 
-        Form a("A13", 4, 6);
-        Form b("B97", 146, 135);
+        Form a("A10", 10, 50);
+        Form b("B51", 51, 150);
 
-        // Attempting to create a Form with very low grades
         try {
-            Form c("C46", 0, 1435); // This should throw GradeTooHighException
+            Form c("c0", 0, 0); //GradeTooHighException
         } catch (std::exception &e) {
-            std::cout << "Creation error: " << e.what() << std::endl; // Grade too high error
+            std::cout << "Creation error: " << e.what() << std::endl;
         }
 
-        // Attempting to create a Form with very high grades
         try {
-            Form d("D143", 583, -800); // This should throw GradeTooLowException
+            Form d("D500", 500, 500); // GradeTooLowException
         } catch (std::exception &e) {
-            std::cout << "Creation error: " << e.what() << std::endl; // Grade too low error
+            std::cout << "Creation error: " << e.what() << std::endl;
         }
-        std::cout << std::endl;
-
-        std::cout << "SIGNING FORMS:" << std::endl;
-        std::cout << "----------------------------" << std::endl;
-
-        // Successful signing
-        std::cout << "SUCCESSFUL SIGNING:" << std::endl;
         try {
-            bob.signForm(a);
-            std::cout << a << " current status displayed" << std::endl;
+            musti.signForm(a);
         } catch (std::exception &e) {
             std::cout << "Signing failed: " << e.what() << std::endl;
         }
@@ -43,32 +30,12 @@ int main() {
         // Unsuccessful signing
         std::cout << "UNSUCCESSFUL SIGNING:" << std::endl;
         try {
-            bill.signForm(a);
-            std::cout << a << " current status displayed" << std::endl;
+            ali.signForm(a);
         } catch (std::exception &e) {
             std::cout << "Signing failed: " << e.what() << std::endl;
         }
         std::cout << std::endl;
 
-        // Successful signing
-        std::cout << "SUCCESSFUL SIGNING:" << std::endl;
-        try {
-            bob.signForm(b);
-            std::cout << b << " current status displayed" << std::endl;
-        } catch (std::exception &e) {
-            std::cout << "Signing failed: " << e.what() << std::endl;
-        }
-        std::cout << std::endl;
-
-        // Successful signing
-        std::cout << "SUCCESSFUL SIGNING:" << std::endl;
-        try {
-            bill.signForm(b);
-            std::cout << b << " current status displayed" << std::endl;
-        } catch (std::exception &e) {
-            std::cout << "Signing failed: " << e.what() << std::endl;
-        }
-        std::cout << std::endl;
 
         std::cout << "DESTRUCTORS:" << std::endl;
         std::cout << "----------------------------" << std::endl;

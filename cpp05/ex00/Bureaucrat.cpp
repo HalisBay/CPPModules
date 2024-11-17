@@ -8,7 +8,7 @@ Bureaucrat::~Bureaucrat() {
     std::cout << this->_name << " destroyed" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, size_t grade) : _name(name) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
     if (grade > 150)
         throw GradeTooLowException();
     else if (grade < 1)
@@ -41,7 +41,7 @@ std::string Bureaucrat::getName() const {
     return this->_name;
 }
 
-size_t Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const {
     return this->_grade;
 }
 

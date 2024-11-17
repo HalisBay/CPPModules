@@ -1,28 +1,29 @@
-#ifndef BUREAUCRAT_HPP
-#define BUREAUCRAT_HPP
+#ifndef BUREAUCRAT_H
+#define BUREAUCRAT_H
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
-class Form; // Forward declaration
+class Form;
 
 class Bureaucrat {
 private:
     std::string _name;
-    size_t _gradeNot;
+    int _grade;
 
 public:
     Bureaucrat();
-    Bureaucrat(std::string name, size_t gradeNot);
+    Bureaucrat(std::string name, int grade);
     ~Bureaucrat();
     Bureaucrat(const Bureaucrat &cpy);
     Bureaucrat &operator=(const Bureaucrat &other);
 
-    void incrementToGradeNot();
-    void decrementToGradeNot();
+    void incrementToGrade();
+    void decrementToGrade();
     std::string getName() const;
-    size_t getGradeNote() const;
-    void setGradeNote(int grade);
+    int getGrade() const;
+    void setGrade(int grade);
     void signForm(Form &f);
 
     class GradeTooHighException : public std::exception {
@@ -36,6 +37,6 @@ public:
     };
 };
 
-std::ostream &operator<<(std::ostream &o, const Bureaucrat &a);
+std::ostream &operator<<(std::ostream &o, Bureaucrat &a);
 
-#endif // BUREAUCRAT_HPP
+#endif

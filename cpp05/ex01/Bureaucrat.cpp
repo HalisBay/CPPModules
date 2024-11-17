@@ -1,7 +1,6 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 
-Bureaucrat::Bureaucrat() : _name("Default"), _gradeNot(150) {
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(150) {
     std::cout << "Default constructor called" << std::endl;
 }
 
@@ -9,13 +8,13 @@ Bureaucrat::~Bureaucrat() {
     std::cout << this->_name << " destroyed" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, size_t gradeNot) : _name(name) {
-    if (gradeNot > 150)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
+    if (grade > 150)
         throw GradeTooLowException();
-    else if (gradeNot < 1)
+    else if (grade < 1)
         throw GradeTooHighException();
     else {
-        this->_gradeNot = gradeNot;
+        this->_grade = grade;
         std::cout << "Created " << name << std::endl;
     }
 }
@@ -26,33 +25,33 @@ Bureaucrat::Bureaucrat(const Bureaucrat &cpy) {
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
     this->_name = other._name;
-    this->_gradeNot = other._gradeNot;
+    this->_grade = other._grade;
     return *this;
 }
 
-void Bureaucrat::incrementToGradeNot() {
-    setGradeNote(this->_gradeNot - 1);
+void Bureaucrat::incrementToGrade() {
+    setGrade(this->_grade - 1);
 }
 
-void Bureaucrat::decrementToGradeNot() {
-    setGradeNote(this->_gradeNot + 1);
+void Bureaucrat::decrementToGrade() {
+    setGrade(this->_grade + 1);
 }
 
 std::string Bureaucrat::getName() const {
     return this->_name;
 }
 
-size_t Bureaucrat::getGradeNote() const {
-    return this->_gradeNot;
+int Bureaucrat::getGrade() const {
+    return this->_grade;
 }
 
-void Bureaucrat::setGradeNote(int grade) {
+void Bureaucrat::setGrade(int grade) {
     if (grade > 150)
         throw GradeTooLowException();
     else if (grade < 1)
         throw GradeTooHighException();
     else
-        this->_gradeNot = grade;
+        this->_grade = grade;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
@@ -63,15 +62,15 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
     return "Grade Too Low";
 }
 
-std::ostream &operator<<(std::ostream &o, const Bureaucrat &a) {
-    o << "Bureaucrat " << a.getName() << ":\n\tgrade: " << a.getGradeNote() << std::endl;
+std::ostream &operator<<(std::ostream &o, Bureaucrat &a) {
+    o << "Bureaucrat " << a.getName() << ":\n\tgrade: " << a.getGrade() << std::endl;
     return o;
 }
-
 void Bureaucrat::signForm(Form &f) {
     try {
         f.beSigned(*this);
-        std::cout << this->_name << " signs " << f.getName() << std::endl;
+        if(f.getSigned())
+            std::cout << this->_name << " signs " << f.getName() << std::endl;
     } catch (Form::GradeTooLowException &e) {
         std::cout << this->_name << " cannot sign " << f.getName() << " because: " << e.what() << std::endl;
     }
