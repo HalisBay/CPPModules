@@ -14,16 +14,13 @@ struct Data {
 class SerializationToData
 {
 private:
-    std::string _str;
-
-public:
     SerializationToData();
     ~SerializationToData();
-    SerializationToData(std::string str);
     SerializationToData(const SerializationToData &cpy);
     SerializationToData &operator=(const SerializationToData &other);
 
-    std::string getStr() const;
+public:
+
     static uintptr_t serialize(Data *ptr);
     static Data *deserialize(uintptr_t raw);
 };

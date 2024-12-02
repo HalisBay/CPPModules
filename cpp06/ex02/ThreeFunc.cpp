@@ -1,11 +1,8 @@
-
 #include "ThreeFunc.hpp"
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
+
 
 Base* generate() {
     int random = rand() % 3;
@@ -34,5 +31,5 @@ void identify(Base* p) {
 }
 
 void identify(Base& p) {
-    identify(&p); // Call the pointer version
+    identify(&p);
 }
