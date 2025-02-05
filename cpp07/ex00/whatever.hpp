@@ -13,13 +13,13 @@ void swap(T & x , T & y)
 template <typename T>
 T min(T a, T b)
 {
-    return(b < a) ? b : a;
+    return(b <= a) ? b : a;
 }
 
 template <typename T>
 T max(T a, T b)
 {
-    return(b < a) ? a : b;
+    return(b <= a) ? a : b;
 }
 
 #endif // WHATEVER_HPP
