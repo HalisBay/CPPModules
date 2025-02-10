@@ -24,23 +24,15 @@ void RPN::calculater(const std::string &args)
         {
             applyOperator(op);
         }
-        else{
-            try
-            {
-                int num = 0;
-                std::istringstream(op) >>num;
-                if (iss.fail())
-                {
-                    throw std::invalid_argument("Error");
-                }
-                _numbers.push(num);
-                
+        else
+        {
+            int num = 0;
+            std::istringstream(op) >>num;
+            if (iss.fail() || num > 9)
+            {                    
+                throw std::invalid_argument("Error");
             }
-            catch(const std::exception& e)
-            {
-                std::cerr << e.what() << '\n';
-            }
-            
+            _numbers.push(num);
         }
     }
     if(_numbers.size() == 1)
