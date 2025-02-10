@@ -29,7 +29,7 @@ void PmergeMe::sortAndPrint() {
     printContainer(_vectorContainer);
 
     clock_t start_time = clock();
-    mergeInsertSort(_vectorContainer);   
+    mergeInsertionSort(_vectorContainer);   
     clock_t end_time = clock();
 
     double vector_time = double(end_time - start_time) / CLOCKS_PER_SEC * 100;
@@ -41,7 +41,7 @@ void PmergeMe::sortAndPrint() {
               << " elements with std::vector : " << vector_time << " us" << std::endl;
 
     start_time = clock();
-    mergeInsertSort(_dequeContainer);
+    mergeInsertionSort(_dequeContainer);
     end_time = clock();
     
     double deque_time = double(end_time - start_time) / CLOCKS_PER_SEC * 100;
@@ -57,18 +57,39 @@ void PmergeMe::printContainer(const Container& container) {
     }
     std::cout << std::endl;
 }
+
 template <typename Container>
-void PmergeMe::mergeInsertSort(Container &container)
+void insertionSort(Container &container)
+{
+    for (typename Container::iterator it = container.begin(); it != container.end(); ++it)
+    {
+        typename Container::value_type current = *it;
+        typename Container::iterator itPrev = it;
+        while (itPrev != container.begin() && *(itPrev - 1) > current)
+        {
+            *itPrev = *(itPrev - 1);
+            --itPrev;
+        }
+        *itPrev = current;
+    }
+    
+}
+template <typename Container>
+void PmergeMe::mergeInsertionSort(Container &container)
 {
     if (container.size() <= 1)
         return;
-
+    else if (container.size() <= 64)
+    {
+        insertionSort(container);
+        return;
+    }
     typename Container::iterator mid = container.begin() + container.size() / 2;
     Container left(container.begin(), mid);
     Container right(mid, container.end());
 
-    mergeInsertSort(left);
-    mergeInsertSort(right);
+    mergeInsertionSort(left);
+    mergeInsertionSort(right);
 
     typename Container::iterator it = container.begin();
     typename Container::iterator itLeft = left.begin();

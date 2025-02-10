@@ -14,7 +14,7 @@ private:
     template <typename Container>
     void printContainer(const Container &container);
     template <typename Container>
-    void mergeInsertSort(Container &container);
+    void mergeInsertionSort(Container &container);
 public:
     PmergeMe();
     ~PmergeMe();
